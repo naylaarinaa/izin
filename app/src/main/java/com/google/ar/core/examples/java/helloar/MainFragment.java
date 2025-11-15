@@ -136,20 +136,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-        ImageButton btnShowView7 = v.findViewById(R.id.menu_button);
-        btnShowView7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_place, new SidemenuFragment());
-                fragmentTransaction.commit();
-            }
-        });
-
-
-
-
         return v;
     }
 }

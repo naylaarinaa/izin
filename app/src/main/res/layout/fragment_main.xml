@@ -27,18 +27,6 @@
                 android:textColor="@color/darkbrown"
                 android:textSize="50dp" />
 
-            <ImageButton
-                android:id="@+id/menu_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_margin="25dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/menu_icon"
-                android:stateListAnimator="@null"/>
-
             <TextView
                 android:id="@+id/subtitle"
                 android:layout_width="wrap_content"
@@ -165,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/desk_content"
-                    android:layout_below="@+id/bed_content">
+                    android:layout_below="@id/bed_content">
                     <Button
                         android:id="@+id/Kitchen"
                         android:layout_width="160dp"
@@ -192,8 +180,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/chair_content"
-                    android:layout_toRightOf="@+id/bed_content"
-                    android:layout_below="@+id/bed_content">
+                    android:layout_toRightOf="@id/bed_content"
+                    android:layout_below="@id/bed_content">
                     <Button
                         android:id="@+id/Bathroom"
                         android:layout_width="160dp"
@@ -220,7 +208,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/sofa_content"
-                    android:layout_below="@+id/desk_content">
+                    android:layout_below="@id/desk_content">
 
                     <Button
                         android:id="@+id/sofa"
@@ -344,7 +332,7 @@
                     android:id="@+id/fur3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/fur1">
+                    android:layout_below="@id/fur1">
 
                     <Button
                         android:id="@+id/image3"
@@ -355,7 +343,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/image3"
+                        android:layout_below="@id/image3"
                         android:layout_marginLeft="10dp"
                         android:fontFamily="@font/gmarketsanslight"
                         android:text="가구 이름"
@@ -366,8 +354,8 @@
                     android:id="@+id/fur4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/fur1"
-                    android:layout_toRightOf="@+id/fur3">
+                    android:layout_below="@id/fur1"
+                    android:layout_toRightOf="@id/fur3">
 
                     <Button
                         android:id="@+id/image4"
@@ -378,7 +366,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/image4"
+                        android:layout_below="@id/image4"
                         android:layout_marginLeft="10dp"
                         android:fontFamily="@font/gmarketsanslight"
                         android:text="가구 이름"
