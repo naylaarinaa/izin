@@ -18,24 +18,24 @@ import static com.google.ar.core.examples.java.helloar.MainActivity.png_file;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BedroomFragment#newInstance} factory method to
+ * Use the {@link DeskFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BedroomFragment extends Fragment {
+public class DeskFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private ImageButton drawer1;
-    private ImageButton drawer2;
-    private ImageButton drawer3;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ImageButton back_button_BedRoom;
-    public BedroomFragment() {
+
+    private ImageButton desk1;
+    private ImageButton desk2;
+    private ImageButton back_button_Kitchen;
+    public DeskFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +45,11 @@ public class BedroomFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BedroomFragment.
+     * @return A new instance of fragment DeskFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BedroomFragment newInstance(String param1, String param2) {
-        BedroomFragment fragment = new BedroomFragment();
+    public static DeskFragment newInstance(String param1, String param2) {
+        DeskFragment fragment = new DeskFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -69,10 +69,10 @@ public class BedroomFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment,
-        ViewGroup v = (ViewGroup) inflater.inflate(R.layout.fragment_bedroom, container, false);
-        back_button_BedRoom = (ImageButton)v.findViewById(R.id.back_button2);
-        back_button_BedRoom.setOnClickListener(new View.OnClickListener(){
+        // Inflate the layout for this fragment
+        ViewGroup v = (ViewGroup) inflater.inflate(R.layout.fragment_desk, container, false);
+        back_button_Kitchen = (ImageButton)v.findViewById(R.id.back_button3);
+        back_button_Kitchen.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -81,45 +81,30 @@ public class BedroomFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-        drawer1 = (ImageButton) v.findViewById(R.id.drawer1);
-        drawer1.setOnClickListener(new View.OnClickListener() {
+
+        desk1 = (ImageButton) v.findViewById(R.id.desk1);
+        desk1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/storage1.obj";
+                    obj_file = "models/table3.obj";
+                    png_file = "models/table_texture6.png";
+                    isObjectReplaced = true;
+                }
+            }
+        });
+        desk2 = (ImageButton) v.findViewById(R.id.desk2);
+        desk2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cnt == 0) {
+                    obj_file = "models/desk2.obj";
                     png_file = "models/table_texture5.png";
-//                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
-
             }
         });
-        drawer2 = (ImageButton) v.findViewById(R.id.drawer2);
-        drawer2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (cnt == 0) {
-                    obj_file = "models/storage2.obj";
-                    png_file = "models/table_texture5.png";
-//                    cnt = cnt + 1;
-                    isObjectReplaced = true;
-                }
 
-            }
-        });
-        drawer3 = (ImageButton) v.findViewById(R.id.drawer3);
-        drawer3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (cnt == 0) {
-                    obj_file = "models/storage3.obj";
-                    png_file = "models/bed_texture1.png";
-//                    cnt = cnt + 1;
-                    isObjectReplaced = true;
-                }
-
-            }
-        });
         return v;
     }
 }

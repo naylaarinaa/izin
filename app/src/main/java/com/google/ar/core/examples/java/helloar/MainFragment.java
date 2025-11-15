@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,7 +75,7 @@ public class MainFragment extends Fragment {
 //        replaceFragment(bedFragment);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_place, new LivingroomFragment());
+                fragmentTransaction.replace(R.id.fragment_place, new BedFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -87,7 +86,7 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_place, new BedroomFragment());
+                fragmentTransaction.replace(R.id.fragment_place, new DrawerFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -98,7 +97,7 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_place, new KitchenFragment());
+                fragmentTransaction.replace(R.id.fragment_place, new DeskFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -109,7 +108,7 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_place, new BathroomFragment());
+                fragmentTransaction.replace(R.id.fragment_place, new ChairFragment());
                 fragmentTransaction.commit();
             }
         });

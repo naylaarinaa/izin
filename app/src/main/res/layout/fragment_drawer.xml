@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LivingroomFragment"
+    tools:context=".DrawerFragment"
     android:background="@drawable/login_box">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-185dp">
         <ImageButton
-            android:id="@+id/back_button1"
+            android:id="@+id/back_button2"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentLeft="true"
@@ -29,7 +29,7 @@
             android:id="@+id/types"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/back_button1"
+            android:layout_below="@+id/back_button2"
             android:layout_centerHorizontal="true">
 
 
@@ -39,23 +39,23 @@
                 android:id="@+id/bed_content">
 
                 <ImageButton
-                    android:id="@+id/bed1"
+                    android:id="@+id/drawer1"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/bed1"
+                    android:src="@drawable/drawer1"
                     android:stateListAnimator="@null"
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bed1"
+                    android:text="Drawer1"
                     android:textColor="@color/brown"
-                    android:layout_below="@id/bed1"
+                    android:layout_below="@id/drawer1"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/gmarketsansbold"
                     android:layout_marginTop="5dp"
@@ -69,23 +69,23 @@
                 android:layout_toRightOf="@+id/bed_content">
 
                 <ImageButton
-                    android:id="@+id/bed2"
+                    android:id="@+id/drawer2"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/bed2"
+                    android:src="@drawable/drawer2"
                     android:stateListAnimator="@null"
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bed2"
+                    android:text="Drawer2"
                     android:textColor="@color/brown"
-                    android:layout_below="@id/bed2"
+                    android:layout_below="@id/drawer2"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/gmarketsansbold"
                     android:layout_marginTop="5dp"
@@ -99,23 +99,23 @@
                 android:id="@+id/desk_content"
                 android:layout_below="@+id/bed_content">
                 <ImageButton
-                    android:id="@+id/bed3"
+                    android:id="@+id/drawer3"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/bed3"
+                    android:src="@drawable/drawer4"
                     android:stateListAnimator="@null"
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bed3"
+                    android:text="Drawer3"
                     android:textColor="@color/brown"
-                    android:layout_below="@id/bed3"
+                    android:layout_below="@id/drawer3"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/gmarketsansbold"
                     android:layout_marginTop="5dp"
@@ -129,23 +129,23 @@
                 android:layout_toRightOf="@+id/bed_content"
                 android:layout_below="@+id/bed_content">
                 <ImageButton
-                    android:id="@+id/bed4"
+                    android:id="@+id/drawer4"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/bed4"
+                    android:src="@drawable/drawer3"
                     android:stateListAnimator="@null"
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bed4"
+                    android:text="Drawer4"
                     android:textColor="@color/brown"
-                    android:layout_below="@id/bed4"
+                    android:layout_below="@id/drawer4"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/gmarketsansbold"
                     android:layout_marginTop="5dp"
@@ -159,23 +159,23 @@
                 android:layout_below="@+id/desk_content">
 
                 <ImageButton
-                    android:id="@+id/bed5"
+                    android:id="@+id/drawer5"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/bed5"
+                    android:src="@drawable/drawer5"
                     android:stateListAnimator="@null"
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bed5"
+                    android:text="Drawer5"
                     android:textColor="@color/brown"
-                    android:layout_below="@id/bed5"
+                    android:layout_below="@id/drawer5"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/gmarketsansbold"
                     android:layout_marginTop="5dp"
@@ -190,23 +190,23 @@
                 android:layout_toRightOf="@+id/sofa_content">
 
                 <ImageButton
-                    android:id="@+id/bed6"
+                    android:id="@+id/drawer6"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/bed6"
+                    android:src="@drawable/drawer6"
                     android:stateListAnimator="@null"
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bed6"
+                    android:text="Drawer6"
                     android:textColor="@color/brown"
-                    android:layout_below="@id/bed6"
+                    android:layout_below="@id/drawer6"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/gmarketsansbold"
                     android:layout_marginTop="5dp"
@@ -215,4 +215,5 @@
 
         </RelativeLayout>
     </RelativeLayout>
+
 </FrameLayout>

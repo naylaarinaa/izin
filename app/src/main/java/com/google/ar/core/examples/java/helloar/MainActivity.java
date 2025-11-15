@@ -158,21 +158,26 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //region ...생략....
+
+        // region initialization
         surfaceView = findViewById(R.id.surfaceview);
         displayRotationHelper = new DisplayRotationHelper(/*context=*/ this);
         mRotationDetector = new RotationGestureDetector(this);
         scaleGestureDetector = new MyScaleGestures(this);
-        //endregion
-        // Set up tap listener.
+        // endregion
+
+        // Set up tap listener for touch interactions.
         tapHelper = new TapHelper(/*context=*/ this);
         surfaceView.setOnTouchListener(tapHelper);
-        //endregion ...생략....
-        //region...생략...
-        // Set up renderer.
+
+        // region Renderer configuration
+        // Set up OpenGL renderer.
         surfaceView.setPreserveEGLContextOnPause(true);
         surfaceView.setEGLContextClientVersion(2);
-        surfaceView.setEGLConfigChooser(8, 8, 8, 8, 16, 0); // Alpha used for plane blending.
+
+        // Configure EGL. Alpha channel is used for plane blending.
+        surfaceView.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+
         surfaceView.setRenderer(this);
         surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
         surfaceView.setWillNotDraw(false);
@@ -181,10 +186,12 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
         calculateUVTransform = true;
 
         depthSettings.onCreate(this);
+
         ImageButton settingsButton = findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(this::launchSettingsMenuDialog);
-        //endregion...생략...
+        // endregion
     }
+
 
     @Override
     protected void onResume() {
@@ -284,32 +291,39 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
     }
     //endregion
 
-    //region Android full screen mode 세팅
+    //region Android full screen mode settings
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         FullScreenHelper.setFullScreenOnWindowFocusChanged(this, hasFocus);
     }
-    //endregion
+//endregion
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         GLES20.glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
-        // Prepare the rendering objects. This involves reading shaders, so may throw an IOException.
+        // Prepare rendering objects. This loads shaders, so it may throw IOException.
         try {
-            // Create the texture and pass it to ARCore session to be filled during update().
+            // Create the texture and let ARCore fill it during update().
             depthTexture.createOnGlThread();
             backgroundRenderer.createOnGlThread(/*context=*/ this, depthTexture.getTextureId());
-            // 바닥 인식 이미지 png로 변경가능
-            planeRenderer.createOnGlThread(/*context=*/ this, "models/trigrid.png");//바닥 이미지
+
+            // Change plane detection visualization image (png can be replaced)
+            planeRenderer.createOnGlThread(/*context=*/ this, "models/trigrid.png"); // Flooring/plane texture
+
             pointCloudRenderer.createOnGlThread(/*context=*/ this);
-            // 3D obj 파일 변경 및 texture 파일 변경
-            virtualObject.createOnGlThread(/*context=*/ this, obj_file, png_file);//obj & texture파일
+
+            // Change 3D obj model file and its texture file
+            virtualObject.createOnGlThread(/*context=*/ this, obj_file, png_file); // obj & texture file
             virtualObject.setBlendMode(BlendMode.AlphaBlending);
+
             virtualObject.setDepthTexture(
-                    depthTexture.getTextureId(), depthTexture.getWidth(), depthTexture.getHeight());
-            // 빛 세기 ambient(주변광), diffuse(분산광), specular(반사광)//0.0f,2.0f,0.5f,6.0f
+                    depthTexture.getTextureId(), depthTexture.getWidth(), depthTexture.getHeight()
+            );
+
+            // Light intensity settings: ambient, diffuse, specular
+            // Example: 0.0f, 2.0f, 0.5f, 6.0f
             virtualObject.setMaterialProperties(0.0f, 2.0f, 0.5f, 6.0f);
 
         } catch (IOException e) {
@@ -325,53 +339,52 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        //region...생략...
-        // Clear screen to notify driver it should not load any pixels from previous frame.
+        //region Rendering preparation
+        // Clear the screen so no previous frame pixels remain.
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
         if (session == null) {
             return;
         }
-        // Notify ARCore session that the view size changed so that the perspective matrix and
-        // the video background can be properly adjusted.
+
+        // Notify ARCore session if view size has changed (needed for projection matrix & background).
         displayRotationHelper.updateSessionIfNeeded(session);
         //endregion
+
         try {
-            //region...생략...
             session.setCameraTextureName(backgroundRenderer.getTextureId());
 
-            // Obtain the current frame from ARSession. When the configuration is set to
-            // UpdateMode.BLOCKING (it is by default), this will throttle the rendering to the
-            // camera framerate.
+            // Get the current frame from ARCore.
             Frame frame = session.update();
             Camera camera = frame.getCamera();
 
             if (frame.hasDisplayGeometryChanged() || calculateUVTransform) {
-                // The UV Transform represents the transformation between screenspace in normalized units
-                // and screenspace in units of pixels.  Having the size of each pixel is necessary in the
-                // virtual object shader, to perform kernel-based blur effects.
+                // UV transform describes mapping between normalized screen space and pixel units.
+                // Needed for virtual object shader blur operations.
                 calculateUVTransform = false;
                 float[] transform = getTextureTransformMatrix(frame);
                 virtualObject.setUvTransformMatrix(transform);
             }
 
+            // Update depth texture if supported.
             if (session.isDepthModeSupported(Config.DepthMode.AUTOMATIC)) {
                 depthTexture.updateWithDepthImageOnGlThread(frame);
             }
 
-            // Handle one tap per frame.
+            // Process single tap.
             handleTap(frame, camera);
 
-            // If frame is ready, render camera preview image to the GL surface.
+            // Draw camera preview.
             backgroundRenderer.draw(frame, depthSettings.depthColorVisualizationEnabled());
 
-            // Keep the screen unlocked while tracking, but allow it to lock when tracking stops.
+            // Keep the screen on while tracking.
             trackingStateHelper.updateKeepScreenOnFlag(camera.getTrackingState());
 
-            // If not tracking, don't draw 3D objects, show tracking failure reason instead.
+            // If tracking is paused, show reason and skip drawing object.
             if (camera.getTrackingState() == TrackingState.PAUSED) {
                 messageSnackbarHelper.showMessage(
-                        this, TrackingStateHelper.getTrackingFailureReasonString(camera));
+                        this, TrackingStateHelper.getTrackingFailureReasonString(camera)
+                );
                 return;
             }
 
@@ -379,74 +392,76 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
             float[] projmtx = new float[16];
             camera.getProjectionMatrix(projmtx, 0, 0.1f, 100.0f);
 
-            // Get camera matrix and draw.
+            // Get view matrix.
             float[] viewmtx = new float[16];
             camera.getViewMatrix(viewmtx, 0);
 
-            // Compute lighting from average intensity of the image.
-            // The first three components are color scaling factors.
-            // The last one is the average pixel intensity in gamma space.
+            // Compute light estimates from the camera frame.
             final float[] colorCorrectionRgba = new float[4];
             frame.getLightEstimate().getColorCorrection(colorCorrectionRgba, 0);
 
             // Visualize tracked points.
-            // Use try-with-resources to automatically release the point cloud.
             try (PointCloud pointCloud = frame.acquirePointCloud()) {
                 pointCloudRenderer.update(pointCloud);
-                //region ###################################### 물체 인식하는 point cloud(파란색 점)삭제 #######################################
+
+                // ###################################### Remove visible point cloud dots (blue dots) #######################################
                 //pointCloudRenderer.draw(viewmtx, projmtx);
-                //endregion
             }
 
-            // No tracking error at this point. If we detected any plane, then hide the
-            // message UI, otherwise show searchingPlane message.
+            // Show searching message if no plane detected.
             if (hasTrackingPlane()) {
                 messageSnackbarHelper.hide(this);
             } else {
                 messageSnackbarHelper.showMessage(this, SEARCHING_PLANE_MESSAGE);
-
             }
 
-            // Visualize planes.
+            // Draw detected planes.
             planeRenderer.drawPlanes(
-                    session.getAllTrackables(Plane.class), camera.getDisplayOrientedPose(), projmtx);
+                    session.getAllTrackables(Plane.class),
+                    camera.getDisplayOrientedPose(),
+                    projmtx
+            );
 
-            // Visualize anchors created by touch.
-            float scaleFactor = 1.0f; //scale관련
+            // Visualize anchors created by touches.
+            float scaleFactor = 1.0f;
             virtualObject.setUseDepthForOcclusion(this, depthSettings.useDepthForOcclusion());
-            //endregion
+
             for (ColoredAnchor coloredAnchor : anchors) {
-                //region...생략...
                 if (coloredAnchor.anchor.getTrackingState() != TrackingState.TRACKING) {
                     continue;
                 }
-                // Get the current pose of an Anchor in world space. The Anchor pose is updated
-                // during calls to session.update() as ARCore refines its estimate of the world.
+
+                // Get world-space pose of anchor.
                 coloredAnchor.anchor.getPose().toMatrix(anchorMatrix, 0);
-                //endregion
-                // Update and draw the model and its shadow.
+
+                // Update model matrix & draw object.
                 virtualObject.updateModelMatrix(anchorMatrix, scaleFactor);
                 virtualObject.draw(viewmtx, projmtx, colorCorrectionRgba, coloredAnchor.color);
             }
+
         } catch (Throwable t) {
-            // Avoid crashing the application due to unhandled exceptions.
             Log.e(TAG, "Exception on the OpenGL thread", t);
         }
-        //3D 객체 교체시 필요
+
+        // Reload 3D object after replacement.
         if (isObjectReplaced) {
             isObjectReplaced = false;
+
             try {
                 virtualObject.createOnGlThread(this, obj_file, png_file);
                 virtualObject.setBlendMode(BlendMode.AlphaBlending);
                 virtualObject.setDepthTexture(
-                        depthTexture.getTextureId(), depthTexture.getWidth(), depthTexture.getHeight());//Depth Settings(depth 적용)
+                        depthTexture.getTextureId(), depthTexture.getWidth(), depthTexture.getHeight()
+                );
                 virtualObject.setMaterialProperties(0.0f, 2.0f, 0.5f, 6.0f);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
             return;
         }
     }
+
 
     // Handle only one tap per frame, as taps are usually low frequency compared to frame rate.
     private void handleTap(Frame frame, Camera camera) {
@@ -646,7 +661,7 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
     }
 
     public void captureMethod(View v) {
-//전에 작업했던 내용
+// Previous work
 //    EGL10 egl = (EGL10) EGLContext.getEGL();
 //    GL10 gl = (GL10)egl.eglGetCurrentContext().getGL();
 //    v = getWindow().getDecorView();
@@ -668,7 +683,7 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
         });
 
 
-        Toast.makeText(getApplicationContext(), "화면이 저장되었습니다", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Screenshot has been saved.", Toast.LENGTH_SHORT).show();
     }
 
     private Bitmap createBitmapFromGLSurface(int x, int y, int w, int h, GL10 gl)
@@ -699,33 +714,36 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
     }
 //endregion
 
-    //region=======객체 삭제 method=======
+    //region======= Object delete method =======
     public void deleteMethod(View v) {
         if (anchors.size() >= 1) {
             anchors.get(anchors.size() - 1).anchor.detach();
             anchors.remove(anchors.size() - 1);
         }
-        Toast.makeText(getApplicationContext(), "삭제되었습니다", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Item has been deleted.", Toast.LENGTH_SHORT).show();
     }
-    //endregion
+//endregion
 
-    //region=======객체 회전 method=======
+    //region======= Object rotation method =======
     @Override
     public void OnRotation(RotationGestureDetector rotationDetector) {
         GlobalClass.rotateF = GlobalClass.rotateF + rotationDetector.getAngle() / 10;
     }
-    //endregion
+//endregion
 
-    //region=======plane rendering 제거 method=======
+    //region======= Plane rendering toggle method =======
     public void plane_check_Method(View v) {
-        if(plane_check==0){
-            Toast.makeText(getApplicationContext(), "Plane Renderer가 제거되었습니다", Toast.LENGTH_SHORT).show();
-            plane_check=1;
-        }else if(plane_check==1){
-            Toast.makeText(getApplicationContext(), "Plane Renderer가 생성되었습니다", Toast.LENGTH_SHORT).show();
-            plane_check=0;
+        if (plane_check == 0) {
+            Toast.makeText(getApplicationContext(),
+                    "Plane renderer has been disabled.",
+                    Toast.LENGTH_SHORT).show();
+            plane_check = 1;
+        } else if (plane_check == 1) {
+            Toast.makeText(getApplicationContext(),
+                    "Plane renderer has been enabled.",
+                    Toast.LENGTH_SHORT).show();
+            plane_check = 0;
         }
-
     }
-    //endregion
+//endregion
 }
