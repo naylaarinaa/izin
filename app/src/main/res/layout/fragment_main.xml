@@ -23,7 +23,7 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/jalnan"
-                android:text="DARI"
+                android:text="FURNIX"
                 android:textColor="@color/darkbrown"
                 android:textSize="50dp" />
 
@@ -34,7 +34,7 @@
                 android:layout_below="@+id/Title_DARI"
                 android:layout_marginLeft="35dp"
                 android:fontFamily="@font/gmarketsanslight"
-                android:text="Design your home with DARI"
+                android:text="Design your home with furnix"
                 android:textSize="13dp"
                 android:textColor="@color/brown"/>
 
@@ -55,7 +55,7 @@
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/login_text_background_selected"
                     android:fontFamily="@font/gmarketsanslight"
-                    android:hint="ex)  Basket chair"
+                    android:hint="ex bed"
                     android:paddingLeft="18dp"
                     android:textSize="11dp"
                     android:textColorHint="@color/darkbrown"/>
