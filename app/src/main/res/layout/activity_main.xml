@@ -59,7 +59,9 @@
       android:layout_alignParentTop="true"
       android:layout_alignParentEnd="true"
       android:layout_margin="25dp"
-      android:background="@android:color/transparent"
+      android:adjustViewBounds="true"
+      android:background="@color/transparent"
+      android:scaleType="fitCenter"
       android:src="@drawable/ic_settings"
       tools:ignore="RtlCompat" />
 
