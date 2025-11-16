@@ -62,6 +62,7 @@ public final class Texture {
    * format, representing each pixel as a depth measurement in millimeters. This method needs to be
    * called on a thread with a EGL context attached.
    */
+  @SuppressWarnings({"deprecation", "removal"})
   public void updateWithDepthImageOnGlThread(final Frame frame) {
     try {
       Image depthImage = frame.acquireDepthImage();

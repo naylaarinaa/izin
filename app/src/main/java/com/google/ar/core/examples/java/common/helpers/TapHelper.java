@@ -21,7 +21,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Toast;
 
-import com.google.ar.core.examples.java.helloar.MainActivity;
+import com.google.ar.core.examples.java.furnix.MainActivity;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

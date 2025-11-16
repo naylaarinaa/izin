@@ -17,13 +17,13 @@
             tools:layout_editor_absoluteY="-185dp">
 
             <TextView
-                android:id="@+id/Title_DARI"
+                android:id="@+id/Title_furnix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/jalnan"
-                android:text="FURNIX"
+                android:text="furnix"
                 android:textColor="@color/darkbrown"
                 android:textSize="50dp" />
 
@@ -31,7 +31,7 @@
                 android:id="@+id/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Title_DARI"
+                android:layout_below="@+id/Title_furnix"
                 android:layout_marginLeft="35dp"
                 android:fontFamily="@font/gmarketsanslight"
                 android:text="Design your home with furnix"

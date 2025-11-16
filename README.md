@@ -1,6 +1,6 @@
-# DARI
+# furnix
 
-DARI stands for Depth Augmented Reality Interior. It is conducted by Android Studio with the language, Java. 
+furnix stands for Depth Augmented Reality Interior. It is conducted by Android Studio with the language, Java. 
 
 # Key Functions
 
@@ -10,7 +10,7 @@ Using ARCore's Depth API among Google APIs, you can determine which object is cl
 - Login/Logout
 - Share the experience through community
 
-# DARI Demo Video
+# furnix Demo Video
 
 [![Watch the video](https://user-images.githubusercontent.com/64020092/99770311-fc930580-2b4a-11eb-9efe-bf692e6541bb.jpeg)](https://www.youtube.com/watch?v=qpOKgAsk5Tw&feature=youtu.be)
 

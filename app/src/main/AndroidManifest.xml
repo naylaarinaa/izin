@@ -22,7 +22,7 @@
       android:supportsRtl="true"
       tools:ignore="GoogleAppIndexingWarning">
       <activity
-          android:name="com.google.ar.core.examples.java.helloar.SplashActivity"
+          android:name="com.google.ar.core.examples.java.furnix.SplashActivity"
           android:exported="true">
           <intent-filter>
               <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
       </activity>
 
     <activity
-        android:name="com.google.ar.core.examples.java.helloar.MainActivity"
+        android:name="com.google.ar.core.examples.java.furnix.MainActivity"
         android:configChanges="orientation|screenSize"
         android:exported="false"
         android:theme="@style/Theme.AppCompat.NoActionBar"

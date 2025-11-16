@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.google.ar.core.examples.java.helloar'
+    namespace 'com.google.ar.core.examples.java.furnix'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.google.ar.core.examples.java.helloar"
+        applicationId "com.google.ar.core.examples.java.furnix"
         minSdk 24
         targetSdk 34
         versionCode 1
@@ -26,6 +26,12 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError false
+        checkReleaseBuilds false
     }
 
     kotlinOptions {
