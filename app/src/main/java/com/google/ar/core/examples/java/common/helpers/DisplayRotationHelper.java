@@ -48,7 +48,7 @@ public final class DisplayRotationHelper implements DisplayListener {
     displayManager = (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
     cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
     WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-    display = windowManager.getDefaultDisplay();
+    display = context.getDisplay();
   }
 
   /** Registers the display listener. Should be called from {@link Activity#onResume()}. */

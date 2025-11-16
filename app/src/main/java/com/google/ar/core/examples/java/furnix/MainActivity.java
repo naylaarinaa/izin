@@ -16,20 +16,23 @@
 
 package com.google.ar.core.examples.java.furnix;
 
-import android.content.Context;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.net.Uri;
 import android.opengl.GLES20;
 import android.opengl.GLException;
 import android.opengl.GLSurfaceView;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.os.Environment;
 import android.provider.MediaStore;
+
+import java.io.IOException;
+import java.io.OutputStream;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -76,13 +79,8 @@ import com.google.ar.core.exceptions.UnavailableDeviceNotCompatibleException;
 import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
 import com.google.ar.core.exceptions.UnavailableUserDeclinedInstallationException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -678,7 +676,7 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
 
             @Override
             public void onBitmapReady(Bitmap bitmap) {
-                MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "furnix", null);
+                saveImageToGallery(bitmap);
             }
         });
 
@@ -746,4 +744,32 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
         }
     }
 //endregion
+
+    /**
+     * Save image to gallery using modern MediaStore API
+     */
+    private void saveImageToGallery(Bitmap bitmap) {
+        ContentResolver resolver = getContentResolver();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "furnix_" + System.currentTimeMillis());
+        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES);
+        }
+        
+        Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+        
+        try {
+            if (imageUri != null) {
+                OutputStream fos = resolver.openOutputStream(imageUri);
+                if (fos != null) {
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    fos.close();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
