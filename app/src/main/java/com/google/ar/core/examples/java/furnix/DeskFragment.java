@@ -83,8 +83,8 @@ public class DeskFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/table3.obj";
-                    png_file = "models/table_texture6.png";
+                    obj_file = "models/tables/table3.obj";
+                    png_file = "models/tables/table_texture6.png";
                     isObjectReplaced = true;
                 }
             }
@@ -94,8 +94,8 @@ public class DeskFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/desk2.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/desks/desk2.obj";
+                    png_file = "models/tables/table_texture5.png";
                     isObjectReplaced = true;
                 }
             }

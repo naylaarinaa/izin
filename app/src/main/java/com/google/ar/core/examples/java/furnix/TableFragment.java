@@ -89,8 +89,8 @@ public class TableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/table1.obj";
-                    png_file = "models/table_texture4.png";
+                    obj_file = "models/tables/table1.obj";
+                    png_file = "models/tables/table_texture4.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -102,8 +102,8 @@ public class TableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/table2.obj";
-                    png_file = "models/table_texture4.png";
+                    obj_file = "models/tables/table2.obj";
+                    png_file = "models/tables/table_texture4.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -115,8 +115,8 @@ public class TableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/table3.obj";
-                    png_file = "models/table_texture6.png";
+                    obj_file = "models/tables/table3.obj";
+                    png_file = "models/tables/table_texture6.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -128,8 +128,8 @@ public class TableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/table4.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/tables/table4.obj";
+                    png_file = "models/tables/table_texture5.png";
                     isObjectReplaced = true;
                 }
             }
@@ -139,8 +139,8 @@ public class TableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/table5.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/tables/table5.obj";
+                    png_file = "models/tables/table_texture5.png";
                     isObjectReplaced = true;
                 }
             }
@@ -150,8 +150,8 @@ public class TableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/table6.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/tables/table6.obj";
+                    png_file = "models/tables/table_texture5.png";
                     isObjectReplaced = true;
                 }
             }

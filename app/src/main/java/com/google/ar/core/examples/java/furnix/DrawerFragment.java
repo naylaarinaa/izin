@@ -82,8 +82,8 @@ public class DrawerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/storage1.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/drawers/drawer1.obj";
+                    png_file = "models/tables/table_texture5.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -95,8 +95,8 @@ public class DrawerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/storage2.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/drawers/drawer2.obj";
+                    png_file = "models/tables/table_texture5.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -108,8 +108,8 @@ public class DrawerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/storage3.obj";
-                    png_file = "models/bed_texture1.png";
+                    obj_file = "models/drawers/drawer3.obj";
+                    png_file = "models/beds/bed_texture1.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }

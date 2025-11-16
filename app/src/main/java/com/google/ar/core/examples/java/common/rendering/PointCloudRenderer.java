@@ -26,8 +26,8 @@ public class PointCloudRenderer {
   private static final String TAG = PointCloud.class.getSimpleName();
 
   // Shader names.
-  private static final String VERTEX_SHADER_NAME = "shaders/point_cloud.vert";
-  private static final String FRAGMENT_SHADER_NAME = "shaders/point_cloud.frag";
+  private static final String VERTEX_SHADER_NAME = "shaders/point_cloud/point_cloud.vert";
+  private static final String FRAGMENT_SHADER_NAME = "shaders/point_cloud/point_cloud.frag";
 
   private static final int BYTES_PER_FLOAT = Float.SIZE / 8;
   private static final int FLOATS_PER_POINT = 4; // X,Y,Z,confidence.

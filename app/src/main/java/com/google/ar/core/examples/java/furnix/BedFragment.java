@@ -90,8 +90,8 @@ public class BedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/bed1.obj";
-                    png_file = "models/bed_texture1.png";
+                    obj_file = "models/beds/bed1.obj";
+                    png_file = "models/beds/bed_texture1.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -103,8 +103,8 @@ public class BedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/bed2.obj";
-                    png_file = "models/table_texture4.png";
+                    obj_file = "models/beds/bed2.obj";
+                    png_file = "models/tables/table_texture4.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -116,8 +116,8 @@ public class BedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/bed3.obj";
-                    png_file = "models/bed_texture3.png";
+                    obj_file = "models/beds/bed3.obj";
+                    png_file = "models/beds/bed_texture3.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -129,8 +129,8 @@ public class BedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/bed4.obj";
-                    png_file = "models/table_texture4.png";
+                    obj_file = "models/beds/bed4.obj";
+                    png_file = "models/furniture/tables/table_texture4.png";
                     isObjectReplaced = true;
                 }
             }
@@ -140,8 +140,8 @@ public class BedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/cube_standard.obj";
-                    png_file = "models/table_texture4.png";
+                    obj_file = "models/primitives/cube_standard.obj";
+                    png_file = "models/furniture/tables/table_texture4.png";
                     isObjectReplaced = true;
                 }
             }
@@ -151,8 +151,8 @@ public class BedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/cube_standard2.obj";
-                    png_file = "models/table_texture4.png";
+                    obj_file = "models/primitives/cube_standard2.obj";
+                    png_file = "models/furniture/tables/table_texture4.png";
                     isObjectReplaced = true;
                 }
             }

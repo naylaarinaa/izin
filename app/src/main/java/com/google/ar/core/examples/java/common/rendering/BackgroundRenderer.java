@@ -36,12 +36,12 @@ public class BackgroundRenderer {
   private static final String TAG = BackgroundRenderer.class.getSimpleName();
 
   // Shader names..
-  private static final String CAMERA_VERTEX_SHADER_NAME = "shaders/screenquad.vert";
-  private static final String CAMERA_FRAGMENT_SHADER_NAME = "shaders/screenquad.frag";
+  private static final String CAMERA_VERTEX_SHADER_NAME = "shaders/screenquad/screenquad.vert";
+  private static final String CAMERA_FRAGMENT_SHADER_NAME = "shaders/screenquad/screenquad.frag";
   private static final String DEPTH_VISUALIZER_VERTEX_SHADER_NAME =
-      "shaders/background_show_depth_color_visualization.vert";
+      "shaders/background/background_show_depth_color_visualization.vert";
   private static final String DEPTH_VISUALIZER_FRAGMENT_SHADER_NAME =
-      "shaders/background_show_depth_color_visualization.frag";
+      "shaders/background/background_show_depth_color_visualization.frag";
 
   private static final int COORDS_PER_VERTEX = 2;
   private static final int TEXCOORDS_PER_VERTEX = 2;

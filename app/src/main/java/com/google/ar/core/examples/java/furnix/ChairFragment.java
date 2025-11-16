@@ -87,8 +87,8 @@ public class ChairFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/chair1.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/chairs/chair1.obj";
+                    png_file = "models/tables/table_texture5.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -100,8 +100,8 @@ public class ChairFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/chair2.obj";
-                    png_file = "models/table_texture4.png";
+                    obj_file = "models/chairs/chair2.obj";
+                    png_file = "models/tables/table_texture4.png";
 //                    cnt = cnt + 1; 
                     isObjectReplaced = true;
                 }
@@ -113,8 +113,8 @@ public class ChairFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/chair3.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/chairs/chair3.obj";
+                    png_file = "models/tables/table_texture5.png";
 ////                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -126,8 +126,8 @@ public class ChairFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/chair4.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/chairs/chair4.obj";
+                    png_file = "models/tables/table_texture5.png";
                     isObjectReplaced = true;
                 }
             }
@@ -137,8 +137,8 @@ public class ChairFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/chair5.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/chairs/chair5.obj";
+                    png_file = "models/tables/table_texture5.png";
                     isObjectReplaced = true;
                 }
             }

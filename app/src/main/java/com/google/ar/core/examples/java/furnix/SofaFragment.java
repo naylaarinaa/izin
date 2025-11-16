@@ -88,8 +88,8 @@ public class SofaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/sofa1.obj";
-                    png_file = "models/bed_texture3.png";
+                    obj_file = "models/sofas/sofa1.obj";
+                    png_file = "models/beds/bed_texture3.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -101,8 +101,8 @@ public class SofaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/sofa2.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/sofas/sofa2.obj";
+                    png_file = "models/tables/table_texture5.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -114,8 +114,8 @@ public class SofaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/sofa3.obj";
-                    png_file = "models/table_texture5.png";
+                    obj_file = "models/sofas/sofa3.obj";
+                    png_file = "models/tables/table_texture5.png";
 //                    cnt = cnt + 1;
                     isObjectReplaced = true;
                 }
@@ -127,8 +127,8 @@ public class SofaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/sofa4.obj";
-                    png_file = "models/table_texture4.png";
+                    obj_file = "models/sofas/sofa4.obj";
+                    png_file = "models/tables/table_texture4.png";
                     isObjectReplaced = true;
                 }
             }
@@ -138,8 +138,8 @@ public class SofaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/sofa5.obj";
-                    png_file = "models/bed5.png";
+                    obj_file = "models/sofas/sofa5.obj";
+                    png_file = "models/beds/bed_texture5.png";
                     isObjectReplaced = true;
                 }
             }
@@ -149,8 +149,8 @@ public class SofaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cnt == 0) {
-                    obj_file = "models/sofa6.obj";
-                    png_file = "models/table_texture6.png";
+                    obj_file = "models/sofas/sofa6.obj";
+                    png_file = "models/tables/table_texture6.png";
                     isObjectReplaced = true;
                 }
             }

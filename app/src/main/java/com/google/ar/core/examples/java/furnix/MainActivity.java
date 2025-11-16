@@ -308,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
             backgroundRenderer.createOnGlThread(/*context=*/ this, depthTexture.getTextureId());
 
             // Change plane detection visualization image (png can be replaced)
-            planeRenderer.createOnGlThread(/*context=*/ this, "models/trigrid.png"); // Flooring/plane texture
+            planeRenderer.createOnGlThread(/*context=*/ this, "models/textures/trigrid.png"); // Flooring/plane texture
 
             pointCloudRenderer.createOnGlThread(/*context=*/ this);
 
